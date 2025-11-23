@@ -1,0 +1,160 @@
+/* Transitions for smooth theme switching */
+body, .bmi-card, .input-dark, button, h1, h2, p, span, div {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Professional Light Theme Styles - INDIGO/VIOLET Accent */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f3ff; /* Soft Violet 50 background */
+    min-height: 100vh;
+}
+/* Dark Mode Background */
+.dark body {
+    background-color: #0f172a; /* Slate 900 */
+}
+
+.bmi-card {
+    background-color: #ffffff; /* Pure white cards */
+    /* Subtle, clean shadow for lift */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.05);
+    color: #1f2937; /* Dark text for light background (Gray 800) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Smooth hover transition */
+}
+/* Dark Mode Card */
+.dark .bmi-card {
+    background-color: #1e293b; /* Slate 800 */
+    color: #f1f5f9; /* Slate 100 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.bmi-card:hover {
+    transform: translateY(-2px); /* Subtle lift on hover */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+.dark .bmi-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* Accent color for buttons (Violet) */
+.primary-accent { 
+    background-color: #7c3aed; /* Tailwind violet-600 */
+    color: #ffffff; /* Light text on bright button */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.primary-accent:hover {
+    background-color: #6d28d9; /* Tailwind violet-700 */
+    transform: scale(1.02); /* Slight scale up on hover */
+}
+.dark .primary-accent {
+    background-color: #8b5cf6; /* Violet 500 for better contrast in dark */
+}
+.dark .primary-accent:hover {
+    background-color: #7c3aed; /* Violet 600 */
+}
+.primary-accent:active {
+    transform: scale(0.98); /* Click feedback */
+}
+
+/* Input Field Styling for Light Theme */
+.input-dark {
+    background-color: #ffffff; /* White background */
+    color: #1f2937; /* Dark text */
+    border-color: #d1d5db; /* Gray 300 border */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+/* Dark Mode Input */
+.dark .input-dark {
+    background-color: #334155; /* Slate 700 */
+    color: #ffffff;
+    border-color: #475569; /* Slate 600 */
+}
+
+.input-dark:focus {
+    border-color: #8b5cf6; /* Violet focus ring */
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5); 
+    outline: none;
+}
+
+/* Result Box Styling */
+.result-box {
+    background-color: #ffffff; /* White background */
+    border-color: #e5e7eb; /* Light gray border */
+}
+.dark .result-box {
+    background-color: #334155; /* Slate 700 */
+    border-color: #475569;
+}
+
+/* Custom Animation Classes for smooth reveal */
+.animated-result {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy ease */
+    pointer-events: none;
+}
+.animated-result.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Staggered Animation Keyframes */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+    opacity: 0; /* Start hidden */
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Animation Delays for Staggering */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* Custom style for the BMI meter pointer */
+#bmi-pointer {
+    transition: left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Springy transition */
+    z-index: 10;
+}
+
+/* Meal Plan Table Styling - Converted from Tailwind @apply to standard CSS for compatibility */
+.meal-table th {
+    background-color: #f5f3ff; /* bg-violet-50 */
+    padding: 0.75rem; /* p-3 */
+    color: #6d28d9; /* text-violet-700 */
+    font-weight: 600;
+    text-align: left;
+    transition: background-color 0.3s, color 0.3s;
+}
+.dark .meal-table th {
+    background-color: #334155; /* bg-slate-700 */
+    color: #c4b5fd; /* text-violet-300 */
+}
+
+.meal-table td {
+    padding: 0.75rem; /* p-3 */
+    border-top: 1px solid #ede9fe; /* border-violet-100 */
+    color: #374151; /* text-gray-700 */
+    transition: color 0.3s, border-color 0.3s;
+}
+.dark .meal-table td {
+    border-color: #475569; /* border-slate-600 */
+    color: #cbd5e1; /* text-slate-300 */
+}
+
+.meal-type {
+    font-weight: 700;
+    color: #111827; /* text-gray-900 */
+    transition: color 0.3s;
+}
+.dark .meal-type {
+    color: #ffffff;
+}
